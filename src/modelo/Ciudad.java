@@ -17,7 +17,6 @@ public class Ciudad implements Runnable, Serializable {
 	private float gananciasDinero, dinero;
 	private String nombreCiudad;
 	private static Ciudad ciudad1;
-	private static Thread t1;
 
 	private Ciudad(int gananciasHierro, int gananciasOro, int gananciasAluminio, int gananciasSilicio,
 			float gananciasDinero, String nombreCiudad) {
@@ -377,8 +376,7 @@ public class Ciudad implements Runnable, Serializable {
 	}
 
 	public static void iniciarThread() {
-		t1 = new Thread();
-		t1.run();
+		new Thread(ciudad1).start();
 	}
 
 	public static void generadorTesoro() {

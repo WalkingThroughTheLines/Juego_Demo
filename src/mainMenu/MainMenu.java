@@ -80,7 +80,7 @@ public class MainMenu {
 			Ciudad.menuCiudad();
 			break;
 		case 1:
-
+			Combate.iniciarCombate();
 			break;
 		case 2:
 			Heroe.menuHeroe();
