@@ -1,8 +1,8 @@
 package modelo;
 
 public class Monstruo {
-	 /**
-	  * @author Jesús, WTTL
+	/**
+	  * @author WTTL
 	  * @version 1.0
 	  */
 }

@@ -2,7 +2,7 @@ package modelo;
 
 public class Combate {
 	 /**
-	  * @author Jesús, WTTL
+	  * @author WTTL
 	  * @version 1.0
 	  */
 }

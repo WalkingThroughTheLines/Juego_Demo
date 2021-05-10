@@ -1,10 +1,12 @@
 package modelo;
 
+import java.io.Serializable;
+
 import javax.swing.JOptionPane;
 
-public class Ciudad implements Runnable{
+public class Ciudad implements Runnable, Serializable{
 	 /**
-	  * @author Jesús, WTTL
+	  * @author WTTL
 	  * @version 1.0
 	  */
 	private int gananciasHierro, gananciasOro, gananciasAluminio, gananciasSilicio
@@ -23,8 +25,13 @@ public class Ciudad implements Runnable{
 		this.nombreCiudad = nombreCiudad;
 	}
 	
+	public static Ciudad existe() {
+		return ciudad1;
+	}
+	
 	public static Ciudad getInstance(int gananciasHierro, int gananciasOro, int gananciasAluminio, int gananciasSilicio,
 			float gananciasDinero, String nombreCiudad) {
+		
 		if(ciudad1==null){
 			ciudad1= new Ciudad(gananciasHierro, gananciasOro, gananciasAluminio, gananciasSilicio, gananciasDinero, nombreCiudad);
 		}
