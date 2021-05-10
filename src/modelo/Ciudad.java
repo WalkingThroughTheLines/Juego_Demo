@@ -1,8 +1,8 @@
-package program1;
+package modelo;
 
 import javax.swing.JOptionPane;
 
-public class Ciudad extends Thread {
+public class Ciudad implements Runnable{
 	 /**
 	  * @author Jesús, WTTL
 	  * @version 1.0
@@ -11,7 +11,8 @@ public class Ciudad extends Thread {
 	, hierro, oro, aluminio, silicio;
 	private float gananciasDinero, dinero;
 	private String nombreCiudad;
-	public Ciudad(int gananciasHierro, int gananciasOro, int gananciasAluminio, int gananciasSilicio,
+	private static Ciudad ciudad1;
+	private Ciudad(int gananciasHierro, int gananciasOro, int gananciasAluminio, int gananciasSilicio,
 			float gananciasDinero, String nombreCiudad) {
 		super();
 		this.gananciasHierro = gananciasHierro;
@@ -20,6 +21,14 @@ public class Ciudad extends Thread {
 		this.gananciasSilicio = gananciasSilicio;
 		this.gananciasDinero = gananciasDinero;
 		this.nombreCiudad = nombreCiudad;
+	}
+	
+	public static Ciudad getInstance(int gananciasHierro, int gananciasOro, int gananciasAluminio, int gananciasSilicio,
+			float gananciasDinero, String nombreCiudad) {
+		if(ciudad1==null){
+			ciudad1= new Ciudad(gananciasHierro, gananciasOro, gananciasAluminio, gananciasSilicio, gananciasDinero, nombreCiudad);
+		}
+		return ciudad1;	
 	}
 	
 	public void run() {
@@ -40,7 +49,7 @@ public class Ciudad extends Thread {
 		}
 	}
 
-	public void contruir() {
+	private void contruir() {
 		String[] options = {"1.", "2.", "3.", "4.", "5."};
 		int x=0;
 		JOptionPane.showMessageDialog(null, "Bienvenido al gestor de edificios de tu ciudad", "Ciudad: " + nombreCiudad, JOptionPane.PLAIN_MESSAGE , null);

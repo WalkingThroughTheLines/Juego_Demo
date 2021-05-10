@@ -1,4 +1,4 @@
-package program1;
+package modelo;
 
 public class Combate {
 	 /**

@@ -1,6 +1,6 @@
-package program1;
+package modelo;
 
-public class Monstruo {
+public class Heroe {
 	 /**
 	  * @author Jesús, WTTL
 	  * @version 1.0
