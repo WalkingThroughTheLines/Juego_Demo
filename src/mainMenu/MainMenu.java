@@ -1,5 +1,12 @@
 package mainMenu;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
 import javax.swing.JOptionPane;
 
 import modelo.Ciudad;
@@ -11,14 +18,15 @@ public class MainMenu {
 	 * @version 1.0
 	 */
 	public static void mainMenu() {
-		if (Ciudad.existe() == null) {
+		cargar();
+		if (Ciudad.getCiudad1() == null) {
 			String nombre;
 			try {
 				JOptionPane.showMessageDialog(null, "Creando una ciudad para que pueda jugar :>",
 						"NO SE HA ENCONTRADO UNA CIUDAD", JOptionPane.INFORMATION_MESSAGE, null);
 				nombre = JOptionPane.showInputDialog(null, "Introduzca el nombre para su ciudad", "Nombre De La Ciudad",
 						JOptionPane.INFORMATION_MESSAGE);
-				Ciudad.getInstance(25, 50, 15, 0, 70, nombre);
+				Ciudad.getInstance(nombre);
 				JOptionPane.showMessageDialog(null, "Ciudad creada", "CREANDO CIUDAD", JOptionPane.INFORMATION_MESSAGE,
 						null);
 			} catch (Exception e) {
@@ -26,14 +34,14 @@ public class MainMenu {
 						JOptionPane.ERROR_MESSAGE, null);
 			}
 		}
-		if (Heroe.existe() == null) {
+		if (Heroe.getHeroe1() == null) {
 			String nombre;
 			try {
 				JOptionPane.showMessageDialog(null, "Creando un heroe para que pueda jugar :>",
 						"NO SE HA ENCONTRADO UN HEROE JUGABLE", JOptionPane.INFORMATION_MESSAGE, null);
 				nombre = JOptionPane.showInputDialog(null, "Introduzca el nombre para su heroe", "Nombre Del Heroe",
 						JOptionPane.INFORMATION_MESSAGE);
-				Ciudad.getInstance(25, 50, 15, 0, 70, nombre);
+				Heroe.getInstance(nombre);
 				JOptionPane.showMessageDialog(null, "Heroe creado", "CREANDO HEROE", JOptionPane.INFORMATION_MESSAGE,
 						null);
 			} catch (Exception e) {
@@ -47,6 +55,7 @@ public class MainMenu {
 			resp = mostrarMenu(resp);
 			opcionesMenu(resp);
 		} while (resp != 0);
+		guardar();
 	}
 
 	private static int mostrarMenu(int resp) {
@@ -66,5 +75,72 @@ public class MainMenu {
 
 	private static void opcionesMenu(int resp) {
 
+	}
+
+	private static void guardar() {
+		try {
+			ObjectOutputStream guardado = new ObjectOutputStream(new FileOutputStream("datosCiudad.dat"));
+			guardado.writeObject(Ciudad.getCiudad1());
+			guardado.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null, "ERROR, NO SE ENCUENTRA EL ARCHIVO", "ERROR", JOptionPane.ERROR_MESSAGE,
+					null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null, "ERROR", "ERROR", JOptionPane.ERROR_MESSAGE, null);
+		}
+		try {
+			ObjectOutputStream guardado = new ObjectOutputStream(new FileOutputStream("datosHeroe.dat"));
+			guardado.writeObject(Heroe.getHeroe1());
+			guardado.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null, "ERROR, NO SE ENCUENTRA EL ARCHIVO", "ERROR", JOptionPane.ERROR_MESSAGE,
+					null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null, "ERROR", "ERROR", JOptionPane.ERROR_MESSAGE, null);
+		}
+	}
+
+	private static void cargar() {
+		try {
+			ObjectInputStream cargado = new ObjectInputStream(new FileInputStream("datosCiudad.dat"));
+			try {
+				Ciudad.setCiudad1((Ciudad) cargado.readObject());
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				JOptionPane.showMessageDialog(null, "ERROR, NO SE HA ENCOTRADO CIUDAD", "ERROR",
+						JOptionPane.ERROR_MESSAGE, null);
+			}
+			cargado.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null, "ERROR, NO SE ENCUENTRA EL ARCHIVO", "ERROR", JOptionPane.ERROR_MESSAGE,
+					null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null, "ERROR", "ERROR", JOptionPane.ERROR_MESSAGE, null);
+		}
+		
+		try {
+			ObjectInputStream cargado = new ObjectInputStream(new FileInputStream("datosHeroe.dat"));
+			try {
+				Heroe.setHeroe1((Heroe) cargado.readObject());
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				JOptionPane.showMessageDialog(null, "ERROR, NO SE HA ENCOTRADO CIUDAD", "ERROR",
+						JOptionPane.ERROR_MESSAGE, null);
+			}
+			cargado.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null, "ERROR, NO SE ENCUENTRA EL ARCHIVO", "ERROR", JOptionPane.ERROR_MESSAGE,
+					null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			JOptionPane.showMessageDialog(null, "ERROR", "ERROR", JOptionPane.ERROR_MESSAGE, null);
+		}
 	}
 }

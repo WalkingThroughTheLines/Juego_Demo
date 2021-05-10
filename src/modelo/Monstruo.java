@@ -2,7 +2,7 @@ package modelo;
 
 public class Monstruo {
 	/**
-	  * @author WTTL
-	  * @version 1.0
-	  */
+	 * @author WTTL
+	 * @version 1.0
+	 */
 }

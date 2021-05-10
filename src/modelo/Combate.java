@@ -1,8 +1,8 @@
 package modelo;
 
 public class Combate {
-	 /**
-	  * @author WTTL
-	  * @version 1.0
-	  */
+	/**
+	 * @author WTTL
+	 * @version 1.0
+	 */
 }

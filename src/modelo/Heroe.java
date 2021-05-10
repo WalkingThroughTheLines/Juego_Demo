@@ -15,11 +15,7 @@ public class Heroe extends Entidad implements Serializable {
 		this.nombre = nombre;
 	}
 
-	public static Heroe existe() {
-		return heroe1;
-	}
-
-	public static Heroe getInstance(int hp, int def, int lvl, int ataque, String efectoPasivo, String nombre) {
+	public static Heroe getInstance(String nombre) {
 		if (heroe1 == null) {
 			heroe1 = new Heroe(15, 8, 1, 5, "none", nombre);
 		}
@@ -28,6 +24,14 @@ public class Heroe extends Entidad implements Serializable {
 
 	public String getNombre() {
 		return nombre;
+	}
+
+	public static Heroe getHeroe1() {
+		return heroe1;
+	}
+
+	public static void setHeroe1(Heroe heroe1) {
+		Heroe.heroe1 = heroe1;
 	}
 
 }
