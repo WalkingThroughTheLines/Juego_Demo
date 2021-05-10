@@ -1,19 +1,27 @@
 package modelo;
 
-public abstract class Entidad {
+import java.io.Serializable;
+
+public abstract class Entidad implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1565482075760583553L;
 	private int hp;
 	private int def;
 	private int lvl;
 	private int ataque;
 	private String efectoPasivo;
+	private int exp;
 
-	public Entidad(int hp, int def, int lvl, int ataque, String efectoPasivo) {
+	public Entidad(int hp, int def, int lvl, int ataque, String efectoPasivo, int exp) {
 		super();
 		this.hp = hp;
 		this.def = def;
 		this.lvl = lvl;
 		this.ataque = ataque;
 		this.efectoPasivo = efectoPasivo;
+		this.exp = exp;
 	}
 
 	public int getHp() {
@@ -54,6 +62,14 @@ public abstract class Entidad {
 
 	public void setEfectoPasivo(String efectoPasivo) {
 		this.efectoPasivo = efectoPasivo;
+	}
+
+	public int getExp() {
+		return exp;
+	}
+
+	public void setExp(int exp) {
+		this.exp = exp;
 	}
 
 }

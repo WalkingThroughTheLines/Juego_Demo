@@ -9,14 +9,14 @@ import java.io.ObjectOutputStream;
 
 import javax.swing.JOptionPane;
 
-import modelo.Ciudad;
-import modelo.Heroe;
+import modelo.*;
 
 public class MainMenu {
 	/**
 	 * @author WTTL
 	 * @version 1.0
 	 */
+
 	public static void mainMenu() {
 		cargar();
 		if (Ciudad.getCiudad1() == null) {
@@ -34,6 +34,7 @@ public class MainMenu {
 						JOptionPane.ERROR_MESSAGE, null);
 			}
 		}
+		Ciudad.iniciarThread();
 		if (Heroe.getHeroe1() == null) {
 			String nombre;
 			try {
@@ -54,7 +55,7 @@ public class MainMenu {
 		do {
 			resp = mostrarMenu(resp);
 			opcionesMenu(resp);
-		} while (resp != 0);
+		} while (resp != 3 && resp != -1);
 		guardar();
 	}
 
@@ -62,7 +63,7 @@ public class MainMenu {
 		String[] opc = { "Ciudad", "Combatir", "Heroe", "Salir" };
 		try {
 			resp = JOptionPane.showOptionDialog(null,
-					"Bienvenido a Walking Through The Lines" + "Elija aventurero lo que desea hacer", "Menu",
+					"Bienvenido a Walking Through The Lines" + "\nElija aventurero lo que desea hacer", "Menu",
 					JOptionPane.DEFAULT_OPTION, JOptionPane.PLAIN_MESSAGE, null, opc, null);
 
 		} catch (Exception e) {
@@ -74,7 +75,27 @@ public class MainMenu {
 	}
 
 	private static void opcionesMenu(int resp) {
+		switch (resp) {
+		case 0:
+			Ciudad.menuCiudad();
+			break;
+		case 1:
 
+			break;
+		case 2:
+			Heroe.menuHeroe();
+			break;
+		case 3:
+			JOptionPane.showMessageDialog(null, "Hasta la proxima", "ADIOS", JOptionPane.INFORMATION_MESSAGE, null);
+			break;
+		case -1:
+			JOptionPane.showMessageDialog(null, "Hasta la proxima", "ADIOS", JOptionPane.INFORMATION_MESSAGE, null);
+			break;
+		default:
+			JOptionPane.showMessageDialog(null, "ERROR, PARAMETRO NO EVALUADO", "ERROR", JOptionPane.ERROR_MESSAGE,
+					null);
+			break;
+		}
 	}
 
 	private static void guardar() {
@@ -83,11 +104,9 @@ public class MainMenu {
 			guardado.writeObject(Ciudad.getCiudad1());
 			guardado.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			JOptionPane.showMessageDialog(null, "ERROR, NO SE ENCUENTRA EL ARCHIVO", "ERROR", JOptionPane.ERROR_MESSAGE,
 					null);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			JOptionPane.showMessageDialog(null, "ERROR", "ERROR", JOptionPane.ERROR_MESSAGE, null);
 		}
 		try {
@@ -95,11 +114,9 @@ public class MainMenu {
 			guardado.writeObject(Heroe.getHeroe1());
 			guardado.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			JOptionPane.showMessageDialog(null, "ERROR, NO SE ENCUENTRA EL ARCHIVO", "ERROR", JOptionPane.ERROR_MESSAGE,
 					null);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			JOptionPane.showMessageDialog(null, "ERROR", "ERROR", JOptionPane.ERROR_MESSAGE, null);
 		}
 	}
@@ -110,36 +127,30 @@ public class MainMenu {
 			try {
 				Ciudad.setCiudad1((Ciudad) cargado.readObject());
 			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
 				JOptionPane.showMessageDialog(null, "ERROR, NO SE HA ENCOTRADO CIUDAD", "ERROR",
 						JOptionPane.ERROR_MESSAGE, null);
 			}
 			cargado.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			JOptionPane.showMessageDialog(null, "ERROR, NO SE ENCUENTRA EL ARCHIVO", "ERROR", JOptionPane.ERROR_MESSAGE,
 					null);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			JOptionPane.showMessageDialog(null, "ERROR", "ERROR", JOptionPane.ERROR_MESSAGE, null);
 		}
-		
+
 		try {
 			ObjectInputStream cargado = new ObjectInputStream(new FileInputStream("datosHeroe.dat"));
 			try {
 				Heroe.setHeroe1((Heroe) cargado.readObject());
 			} catch (ClassNotFoundException e) {
-				// TODO Auto-generated catch block
 				JOptionPane.showMessageDialog(null, "ERROR, NO SE HA ENCOTRADO CIUDAD", "ERROR",
 						JOptionPane.ERROR_MESSAGE, null);
 			}
 			cargado.close();
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			JOptionPane.showMessageDialog(null, "ERROR, NO SE ENCUENTRA EL ARCHIVO", "ERROR", JOptionPane.ERROR_MESSAGE,
 					null);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			JOptionPane.showMessageDialog(null, "ERROR", "ERROR", JOptionPane.ERROR_MESSAGE, null);
 		}
 	}
