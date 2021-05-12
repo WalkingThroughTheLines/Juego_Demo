@@ -18,7 +18,7 @@ public class MainMenu {
 	 */
 
 	public static void mainMenu() {
-		JOptionPane.showMessageDialog(null, "Inciando su juego...\nCargando sus datos\n(No tema en cerrar su juego en cualquiermomento, tiene autoguardado)", "INICIANDO WTTL", JOptionPane.WARNING_MESSAGE, null);
+		JOptionPane.showMessageDialog(null, "Inciando su juego...\nCargando sus datos\n(No tema en cerrar su juego en cualquier momento, tiene autoguardado)", "INICIANDO WTTL", JOptionPane.WARNING_MESSAGE, null);
 		cargar();
 		if (Ciudad.getCiudad1() == null) {
 			String nombre;
