@@ -39,12 +39,12 @@ public class Heroe extends Entidad implements Serializable {
 		Heroe.heroe1 = heroe1;
 	}
 
-	public static void subirLvl() {
-		if (heroe1.getExp() > 250 * (heroe1.getLvl() * 0.5)) {
-			heroe1.setExp(heroe1.getLvl() + 1);
+	public void subirLvl() {
+		if (heroe1.getExp() >= 250 * (heroe1.getLvl() * 0.5)) {
 			heroe1.setHp((int) Math.floor(heroe1.getHp() * 1.40));
 			heroe1.setDef((int) Math.floor(heroe1.getDef() * 1.30));
 			heroe1.setAtaque((int) Math.floor(heroe1.getAtaque() * 1.25));
+			heroe1.setLvl(getLvl()+1);
 			heroe1.setExp(0);
 			JOptionPane.showMessageDialog(null, heroe1.nombre + " Ha subido de nivel", heroe1.nombre,
 					JOptionPane.WARNING_MESSAGE, null);

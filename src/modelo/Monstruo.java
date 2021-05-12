@@ -34,21 +34,21 @@ public class Monstruo extends Entidad {
 
 	public void generarMonstruo() {
 		setLvl(Heroe.getHeroe1().getLvl()); 
-		setHp((int) Math.floor(Math.random() * (Heroe.getHeroe1().getHp() - (Heroe.getHeroe1().getHp() * 0.20))));
-		setDef((int) Math.floor(Math.random() * (Heroe.getHeroe1().getDef() - (Heroe.getHeroe1().getDef() * 0.20))));
+		setHp((int) Math.floor(1+Math.random() * (Heroe.getHeroe1().getHp() - (Heroe.getHeroe1().getHp() * 0.40))));
+		setDef((int) Math.floor(1+Math.random() * (Heroe.getHeroe1().getDef() - (Heroe.getHeroe1().getDef() * 0.40))));
 		setAtaque((int) Math
-				.floor(Math.random() * (Heroe.getHeroe1().getAtaque() - (Heroe.getHeroe1().getAtaque() * 0.20))));
+				.floor(1+Math.random() * (Heroe.getHeroe1().getAtaque() - (Heroe.getHeroe1().getAtaque() * 0.40))));
 		setEfectoPasivo("none");
-		setExp((int) Math.floor(Math.random() * (60 * (getExp() * 0.5))));
+		setExp((int) Math.floor(1+Math.random() * (60 * 0.5)));
 	}
 	public void generarJefe() {
 		setLvl(Heroe.getHeroe1().getLvl()); 
-		setHp((int) Math.floor(Math.random() * (Heroe.getHeroe1().getHp() - (Heroe.getHeroe1().getHp() * 0.40))));
-		setDef((int) Math.floor(Math.random() * (Heroe.getHeroe1().getDef() - (Heroe.getHeroe1().getDef() * 0.40))));
+		setHp((int) Math.floor(1+Math.random() * (Heroe.getHeroe1().getHp() - (Heroe.getHeroe1().getHp() * 0.20))));
+		setDef((int) Math.floor(1+Math.random() * (Heroe.getHeroe1().getDef() - (Heroe.getHeroe1().getDef() * 0.20))));
 		setAtaque((int) Math
-				.floor(Math.random() * (Heroe.getHeroe1().getAtaque() - (Heroe.getHeroe1().getAtaque() * 0.40))));
+				.floor(1+Math.random() * (Heroe.getHeroe1().getAtaque() - (Heroe.getHeroe1().getAtaque() * 0.20))));
 		setEfectoPasivo("none");
-		setExp((int) Math.floor(Math.random() * (60 * (getExp() * 0.7))));
+		setExp((int) Math.floor(1+Math.random() * (60* 0.7)));
 
 	}
 

@@ -18,6 +18,7 @@ public class MainMenu {
 	 */
 
 	public static void mainMenu() {
+		JOptionPane.showMessageDialog(null, "Inciando su juego...\nCargando sus datos\n(No tema en cerrar su juego en cualquiermomento, tiene autoguardado)", "INICIANDO WTTL", JOptionPane.WARNING_MESSAGE, null);
 		cargar();
 		if (Ciudad.getCiudad1() == null) {
 			String nombre;
@@ -33,6 +34,8 @@ public class MainMenu {
 				JOptionPane.showMessageDialog(null, "ERROR, valores introducidos incorrectos", "ERROR",
 						JOptionPane.ERROR_MESSAGE, null);
 			}
+		}else {
+			JOptionPane.showMessageDialog(null, "SE HA CARGADO SU CIUDAD CORRECTAMENTE", "CIUDAD CARGADA", JOptionPane.INFORMATION_MESSAGE, null);
 		}
 		Ciudad.iniciarThread();
 		if (Heroe.getHeroe1() == null) {
@@ -49,8 +52,10 @@ public class MainMenu {
 				JOptionPane.showMessageDialog(null, "ERROR, valores introducidos incorrectos", "ERROR",
 						JOptionPane.ERROR_MESSAGE, null);
 			}
-
+		}else {
+			JOptionPane.showMessageDialog(null, "SE HA CARGADO SU HEROE CORRECTAMENTE", "HEROE CARGADA", JOptionPane.INFORMATION_MESSAGE, null);
 		}
+		
 		int resp = 0;
 		do {
 			resp = mostrarMenu(resp);
@@ -132,7 +137,7 @@ public class MainMenu {
 			}
 			cargado.close();
 		} catch (FileNotFoundException e) {
-			JOptionPane.showMessageDialog(null, "ERROR, NO SE ENCUENTRA EL ARCHIVO", "ERROR", JOptionPane.ERROR_MESSAGE,
+			JOptionPane.showMessageDialog(null, "No se encuentran datos de la ciudad", "ERROR", JOptionPane.ERROR_MESSAGE,
 					null);
 		} catch (IOException e) {
 			JOptionPane.showMessageDialog(null, "ERROR", "ERROR", JOptionPane.ERROR_MESSAGE, null);
@@ -148,7 +153,7 @@ public class MainMenu {
 			}
 			cargado.close();
 		} catch (FileNotFoundException e) {
-			JOptionPane.showMessageDialog(null, "ERROR, NO SE ENCUENTRA EL ARCHIVO", "ERROR", JOptionPane.ERROR_MESSAGE,
+			JOptionPane.showMessageDialog(null, "No se encuentran datos del personaje", "ERROR", JOptionPane.ERROR_MESSAGE,
 					null);
 		} catch (IOException e) {
 			JOptionPane.showMessageDialog(null, "ERROR", "ERROR", JOptionPane.ERROR_MESSAGE, null);

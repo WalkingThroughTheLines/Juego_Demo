@@ -172,7 +172,7 @@ public class Ciudad implements Runnable, Serializable {
 						setDinero(getDinero() - 600);
 						setHierro(getHierro() - 100);
 						setAluminio(getAluminio() - 120);
-						setGananciasAluminio(getGananciasAluminio() - 25);
+						setGananciasAluminio(getGananciasAluminio() - 10);
 						setGananciasHierro(getGananciasHierro() + 30);
 						setGananciasDinero(getGananciasDinero() - 20);
 						JOptionPane.showMessageDialog(null, "Se ha creado con exito su mina de hierro", nombreCiudad,
@@ -386,9 +386,9 @@ public class Ciudad implements Runnable, Serializable {
 			tsHierro=(int) Math.ceil(Math.random() * 100);
 			tsOro=(int) Math.ceil(Math.random() * 80);
 			tsDinero=(int) Math.ceil(Math.random() * 200);
-			ciudad1.hierro =+ tsHierro;
-			ciudad1.oro =+tsOro;
-			ciudad1.dinero =+tsDinero;
+			ciudad1.hierro += tsHierro;
+			ciudad1.oro +=tsOro;
+			ciudad1.dinero +=tsDinero;
 			JOptionPane.showMessageDialog(null, "Ha obtenido: \n"+tsHierro+" de Hierro."
 					+"\n"+tsOro+" de Oro."
 					+"\n"+tsDinero+" Monedas"
@@ -398,10 +398,10 @@ public class Ciudad implements Runnable, Serializable {
 			tsOro=(int) Math.ceil(Math.random() * 110);
 			tsDinero=(int) Math.ceil(Math.random() * 400);
 			tsAluminio=(int) Math.ceil(Math.random() * 60);
-			ciudad1.hierro =+ tsHierro;
-			ciudad1.oro =+tsOro;
-			ciudad1.dinero =+tsDinero;
-			ciudad1.aluminio =+tsAluminio;
+			ciudad1.hierro += tsHierro;
+			ciudad1.oro +=tsOro;
+			ciudad1.dinero +=tsDinero;
+			ciudad1.aluminio +=tsAluminio;
 			JOptionPane.showMessageDialog(null, "Ha obtenido: \n"+tsHierro+" de Hierro."
 					+"\n"+tsOro+" de Oro."
 					+"\n"+tsDinero+" Monedas"
@@ -413,11 +413,11 @@ public class Ciudad implements Runnable, Serializable {
 			tsDinero=(int) Math.ceil(Math.random() * 600);
 			tsAluminio=(int) Math.ceil(Math.random() * 90);
 			tsSilicio=(int) Math.ceil(Math.random() * 20);
-			ciudad1.hierro =+ tsHierro;
-			ciudad1.oro =+tsOro;
-			ciudad1.dinero =+tsDinero;
-			ciudad1.aluminio =+tsAluminio;
-			ciudad1.silicio =+tsSilicio;
+			ciudad1.hierro += tsHierro;
+			ciudad1.oro += tsOro;
+			ciudad1.dinero +=tsDinero;
+			ciudad1.aluminio +=tsAluminio;
+			ciudad1.silicio +=tsSilicio;
 			JOptionPane.showMessageDialog(null, "Ha obtenido: \n"+tsHierro+" de Hierro."
 					+"\n"+tsOro+" de Oro."
 					+"\n"+tsDinero+" Monedas"
